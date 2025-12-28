@@ -27,7 +27,7 @@ def main(grid: Grid, context: Context) -> None:
     global_model = Net()
     arrays = ArrayRecord(global_model.state_dict())
 
-    # Initialize FedAvg strategy
+    # Initialize CustomFedAdagrad 
     strategy = CustomFedAdagrad(fraction_evaluate=fraction_evaluate)
     
     # get current datetime, find save path
