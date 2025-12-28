@@ -29,15 +29,15 @@ class CustomFedAdagrad(FedAdagrad):
         """Set save path for wandb logs and model checkpoints"""
         self.save_path = path
 
-    def __update_best_acc(
-        self, current_rount: int, accuracy: float, arrays: ArrayRecord
+    def _update_best_acc(
+        self, current_round: int, accuracy: float, arrays: ArrayRecord
     ) -> None:
         """Update best accuracy and save model checkpoint if current accuracy is higher"""
         if accuracy > self.best_acc_so_far:
             self.best_acc_so_far = accuracy
             logger.log(INFO, "New best global model found: %f", accuracy)
             # Save PyTorch Modle
-            file_name = f"model_state_acc_{accuracy}_round_{current_rount}.pth"
+            file_name = f"model_state_acc_{accuracy}_round_{current_round}.pth"
             torch.save(arrays.to_torch_state_dict(), self.save_path / file_name)
             logger.log(INFO, " New best model saved to disk: %s", file_name)
 

@@ -3,7 +3,7 @@
 import torch
 from flwr.app import ArrayRecord, ConfigRecord, Context, MetricRecord
 from flwr.serverapp import Grid, ServerApp
-from pytorchexample.task import CustomFedAdagrad
+from pytorchexample.custom_strategy import CustomFedAdagrad
 
 from datetime import datetime
 from pathlib import Path
@@ -32,7 +32,7 @@ def main(grid: Grid, context: Context) -> None:
     
     # get current datetime, find save path
     current_time = datetime.now()
-    run_dir = current_time.strftime("%Y-%m-%d/%H-%M-S")
+    run_dir = current_time.strftime("%Y-%m-%d/%H-%M-%S")
     save_path = Path.cwd() / f"outputs/{run_dir}"
     save_path.mkdir(parents=True, exist_ok = False)
     # set path for saving results and checkpoints 
