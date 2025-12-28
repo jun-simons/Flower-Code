@@ -3,7 +3,7 @@
 import torch
 from flwr.app import ArrayRecord, ConfigRecord, Context, MetricRecord
 from flwr.serverapp import Grid, ServerApp
-from flwr.serverapp.strategy import CustomFedAdagrad
+from pytorchexample.task import CustomFedAdagrad
 
 from datetime import datetime
 from pathlib import Path
