@@ -8,6 +8,8 @@ from pytorchexample.task import Net, load_data
 from pytorchexample.task import test as test_fn
 from pytorchexample.task import train as train_fn
 
+import pickle
+
 # Flower ClientApp
 app = ClientApp()
 
@@ -15,6 +17,8 @@ app = ClientApp()
 @app.train()
 def train(msg: Message, context: Context):
     """Train the model on local data."""
+    
+    start_time = time.time()
 
     # Load the model and initialize it with the received weights
     model = Net()
@@ -37,12 +41,16 @@ def train(msg: Message, context: Context):
         msg.content["config"]["lr"],
         device,
     )
+    
+    end_time = time.time()
+    training_time = end_time - start_time
 
     # Construct and return reply Message
     model_record = ArrayRecord(model.state_dict())
     metrics = {
         "train_loss": train_loss,
         "num-examples": len(trainloader.dataset),
+        "training_time": training_time, #New metric
     }
     metric_record = MetricRecord(metrics)
     content = RecordDict({"arrays": model_record, "metrics": metric_record})

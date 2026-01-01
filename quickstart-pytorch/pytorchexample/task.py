@@ -8,7 +8,7 @@ from flwr_datasets import FederatedDataset
 from flwr_datasets.partitioner import IidPartitioner
 from torch.utils.data import DataLoader
 from torchvision.transforms import Compose, Normalize, ToTensor
-
+from dataclasses import dataclass
 
 class Net(nn.Module):
     """Model (simple CNN adapted from 'PyTorch: A 60 Minute Blitz')"""
@@ -29,6 +29,14 @@ class Net(nn.Module):
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
         return self.fc3(x)
+
+
+@dataclass
+class TrainProcessMetadata:
+    """Metadata about training process"""
+    training_time: float
+    converged: bool
+    training_losses: dict[str, float]
 
 
 fds = None  # Cache FederatedDataset
@@ -107,3 +115,4 @@ def test(net, testloader, device):
     accuracy = correct / len(testloader.dataset)
     loss = loss / len(testloader)
     return loss, accuracy
+
