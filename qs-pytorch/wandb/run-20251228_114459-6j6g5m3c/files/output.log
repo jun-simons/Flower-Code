@@ -1,0 +1,100 @@
+[92mINFO [0m:      Starting CustomFedAdagrad strategy:
+[92mINFO [0m:      	├── Number of rounds: 3
+[92mINFO [0m:      	├── ArrayRecord (0.24 MB)
+[92mINFO [0m:      	├── ConfigRecord (train): {'lr': 0.1}
+[92mINFO [0m:      	├── ConfigRecord (evaluate): (empty!)
+[92mINFO [0m:      	├──> FedOpt settings:
+[92mINFO [0m:      	│	├── eta (0.1) | eta_l (0.1)
+[92mINFO [0m:      	│	├── beta_1 (0) | beta_2 (0)
+[92mINFO [0m:      	│	└── tau (0.001)
+[92mINFO [0m:      	├──> Sampling:
+[92mINFO [0m:      	│	├──Fraction: train (1.00) | evaluate ( 0.50)
+[92mINFO [0m:      	│	├──Minimum nodes: train (2) | evaluate (2)
+[92mINFO [0m:      	│	└──Minimum available nodes: 2
+[92mINFO [0m:      	└──> Keys in records:
+[92mINFO [0m:      		├── Weighted by: 'num-examples'
+[92mINFO [0m:      		├── ArrayRecord key: 'arrays'
+[92mINFO [0m:      		└── ConfigRecord key: 'config'
+[92mINFO [0m:
+[92mINFO [0m:      Initial global evaluation results: {'accuracy': 0.11, 'loss': 2.303919152368473}
+[92mINFO [0m:
+[92mINFO [0m:      [ROUND 1/3]
+[92mINFO [0m:      configure_train: Sampled 10 nodes (out of 10)
+[36m(ClientAppActor pid=70717)[0m Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[92mINFO [0m:      aggregate_train: Received 10 results and 0 failures
+[92mINFO [0m:      	└──> Aggregated MetricRecord: {'train_loss': 2.222925423049927}
+[92mINFO [0m:      configure_evaluate: Sampled 5 nodes (out of 10)
+[92mINFO [0m:      aggregate_evaluate: Received 5 results and 0 failures
+[92mINFO [0m:      	└──> Aggregated MetricRecord: {'eval_loss': 2.311771883070469, 'eval_acc': 0.09440000000000001}
+[92mINFO [0m:      Global evaluation
+[92mINFO [0m:      	└──> MetricRecord: {'accuracy': 0.0997, 'loss': 2.309231718884239}
+[92mINFO [0m:      New best global model found: 0.099700
+[91mERROR [0m:     ServerApp thread raised an exception: name 'current_round' is not defined
+[91mERROR [0m:     Traceback (most recent call last):
+  File "/opt/homebrew/anaconda3/envs/flower/lib/python3.11/site-packages/flwr/simulation/run_simulation.py", line 282, in server_th_with_start_checks
+    updated_context = _run(
+                      ^^^^^
+  File "/opt/homebrew/anaconda3/envs/flower/lib/python3.11/site-packages/flwr/server/run_serverapp.py", line 61, in run
+    server_app(grid=grid, context=context)
+  File "/opt/homebrew/anaconda3/envs/flower/lib/python3.11/site-packages/flwr/server/server_app.py", line 175, in __call__
+    self._main(grid, context)
+  File "/Users/junsimons/Documents/Research/Coterm/Flower-Code/quickstart-pytorch/pytorchexample/server_app.py", line 42, in main
+    result = strategy.start(
+             ^^^^^^^^^^^^^^^
+  File "/Users/junsimons/Documents/Research/Coterm/Flower-Code/quickstart-pytorch/pytorchexample/custom_strategy.py", line 164, in start
+    self._update_best_acc(current_round, res["accuracy"], arrays)
+  File "/Users/junsimons/Documents/Research/Coterm/Flower-Code/quickstart-pytorch/pytorchexample/custom_strategy.py", line 40, in _update_best_acc
+    file_name = f"model_state_acc_{accuracy}_round_{current_round}.pth"
+                                                    ^^^^^^^^^^^^^
+NameError: name 'current_round' is not defined
+
+Exception in thread Thread-1 (server_th_with_start_checks):
+Traceback (most recent call last):
+  File "/opt/homebrew/anaconda3/envs/flower/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "/opt/homebrew/anaconda3/envs/flower/lib/python3.11/threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/homebrew/anaconda3/envs/flower/lib/python3.11/site-packages/flwr/simulation/run_simulation.py", line 282, in server_th_with_start_checks
+    updated_context = _run(
+                      ^^^^^
+  File "/opt/homebrew/anaconda3/envs/flower/lib/python3.11/site-packages/flwr/server/run_serverapp.py", line 61, in run
+    server_app(grid=grid, context=context)
+  File "/opt/homebrew/anaconda3/envs/flower/lib/python3.11/site-packages/flwr/server/server_app.py", line 175, in __call__
+    self._main(grid, context)
+  File "/Users/junsimons/Documents/Research/Coterm/Flower-Code/quickstart-pytorch/pytorchexample/server_app.py", line 42, in main
+    result = strategy.start(
+             ^^^^^^^^^^^^^^^
+  File "/Users/junsimons/Documents/Research/Coterm/Flower-Code/quickstart-pytorch/pytorchexample/custom_strategy.py", line 164, in start
+    self._update_best_acc(current_round, res["accuracy"], arrays)
+  File "/Users/junsimons/Documents/Research/Coterm/Flower-Code/quickstart-pytorch/pytorchexample/custom_strategy.py", line 40, in _update_best_acc
+    file_name = f"model_state_acc_{accuracy}_round_{current_round}.pth"
+                                                    ^^^^^^^^^^^^^
+NameError: name 'current_round' is not defined. Did you mean: 'current_rount'?
+[36m(ClientAppActor pid=70718)[0m [93mWARNING [0m:   Manually terminating ClientAppActor
+[36m(ClientAppActor pid=70716)[0m Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Traceback (most recent call last):
+  File "/opt/homebrew/anaconda3/envs/flower/bin/flower-simulation", line 7, in <module>
+    sys.exit(run_simulation_from_cli())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/flower/lib/python3.11/site-packages/flwr/simulation/run_simulation.py", line 154, in run_simulation_from_cli
+    _ = _run_simulation(
+        ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/flower/lib/python3.11/site-packages/flwr/simulation/run_simulation.py", line 523, in _run_simulation
+    updated_context = _main_loop(*args)
+                      ^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/flower/lib/python3.11/site-packages/flwr/simulation/run_simulation.py", line 421, in _main_loop
+    raise RuntimeError("Exception in ServerApp thread")
+RuntimeError: Exception in ServerApp thread
+Traceback (most recent call last):
+  File "/opt/homebrew/anaconda3/envs/flower/bin/flower-simulation", line 7, in <module>
+    sys.exit(run_simulation_from_cli())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/flower/lib/python3.11/site-packages/flwr/simulation/run_simulation.py", line 154, in run_simulation_from_cli
+    _ = _run_simulation(
+        ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/flower/lib/python3.11/site-packages/flwr/simulation/run_simulation.py", line 523, in _run_simulation
+    updated_context = _main_loop(*args)
+                      ^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/anaconda3/envs/flower/lib/python3.11/site-packages/flwr/simulation/run_simulation.py", line 421, in _main_loop
+    raise RuntimeError("Exception in ServerApp thread")
+RuntimeError: Exception in ServerApp thread

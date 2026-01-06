@@ -1,0 +1,11 @@
+{"time":"2025-12-28T11:45:36.243863-05:00","level":"INFO","msg":"stream: starting","core version":"0.23.1"}
+{"time":"2025-12-28T11:45:36.466204-05:00","level":"INFO","msg":"stream: created new stream","id":"fsd76fkc"}
+{"time":"2025-12-28T11:45:36.466241-05:00","level":"INFO","msg":"handler: started","stream_id":"fsd76fkc"}
+{"time":"2025-12-28T11:45:36.466389-05:00","level":"INFO","msg":"writer: started","stream_id":"fsd76fkc"}
+{"time":"2025-12-28T11:45:36.4664-05:00","level":"INFO","msg":"stream: started","id":"fsd76fkc"}
+{"time":"2025-12-28T11:45:36.466411-05:00","level":"INFO","msg":"sender: started","stream_id":"fsd76fkc"}
+{"time":"2025-12-28T11:45:54.813415-05:00","level":"INFO","msg":"stream: closing","id":"fsd76fkc"}
+{"time":"2025-12-28T11:45:55.302112-05:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-12-28T11:45:55.561534-05:00","level":"INFO","msg":"handler: closed","stream_id":"fsd76fkc"}
+{"time":"2025-12-28T11:45:55.562065-05:00","level":"INFO","msg":"sender: closed","stream_id":"fsd76fkc"}
+{"time":"2025-12-28T11:45:55.562091-05:00","level":"INFO","msg":"stream: closed","id":"fsd76fkc"}

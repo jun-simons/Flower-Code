@@ -1,0 +1,60 @@
+_wandb:
+    value:
+        cli_version: 0.23.1
+        e:
+            5f3fdunyf3g2f85ymmzhznax8440pwt7:
+                apple:
+                    ecpuCores: 4
+                    gpuCores: 40
+                    memoryGb: 48
+                    name: Apple M4 Max
+                    pcpuCores: 12
+                    ramTotalBytes: "51539607552"
+                    swapTotalBytes: "12884901888"
+                args:
+                    - --app
+                    - .
+                    - --num-supernodes
+                    - "10"
+                cpu_count: 16
+                cpu_count_logical: 16
+                disk:
+                    /:
+                        total: "994662584320"
+                        used: "798568329216"
+                email: jdsimons017@gmail.com
+                executable: /opt/homebrew/anaconda3/envs/flower/bin/python
+                git:
+                    commit: f55a4055e5aba648ec866a371cae6b042d27a326
+                    remote: git@github.com:jun-simons/Flower-Code.git
+                host: Mac
+                memory:
+                    total: "51539607552"
+                os: macOS-15.6.1-arm64-arm-64bit
+                program: /opt/homebrew/anaconda3/envs/flower/bin/flower-simulation
+                python: CPython 3.11.14
+                root: /Users/junsimons/Documents/Research/Coterm/Flower-Code/quickstart-pytorch
+                startedAt: "2025-12-28T16:45:35.968522Z"
+                writerId: 5f3fdunyf3g2f85ymmzhznax8440pwt7
+        m: []
+        python_version: 3.11.14
+        t:
+            "1":
+                - 1
+                - 30
+                - 41
+                - 49
+                - 51
+            "2":
+                - 1
+                - 30
+                - 41
+                - 49
+                - 51
+            "3":
+                - 13
+                - 61
+            "4": 3.11.14
+            "5": 0.23.1
+            "12": 0.23.1
+            "13": darwin-arm64

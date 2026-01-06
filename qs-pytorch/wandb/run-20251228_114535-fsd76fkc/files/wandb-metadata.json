@@ -1,0 +1,41 @@
+{
+  "os": "macOS-15.6.1-arm64-arm-64bit",
+  "python": "CPython 3.11.14",
+  "startedAt": "2025-12-28T16:45:35.968522Z",
+  "args": [
+    "--app",
+    ".",
+    "--num-supernodes",
+    "10"
+  ],
+  "program": "/opt/homebrew/anaconda3/envs/flower/bin/flower-simulation",
+  "git": {
+    "remote": "git@github.com:jun-simons/Flower-Code.git",
+    "commit": "f55a4055e5aba648ec866a371cae6b042d27a326"
+  },
+  "email": "jdsimons017@gmail.com",
+  "root": "/Users/junsimons/Documents/Research/Coterm/Flower-Code/quickstart-pytorch",
+  "host": "Mac",
+  "executable": "/opt/homebrew/anaconda3/envs/flower/bin/python",
+  "cpu_count": 16,
+  "cpu_count_logical": 16,
+  "disk": {
+    "/": {
+      "total": "994662584320",
+      "used": "798568329216"
+    }
+  },
+  "memory": {
+    "total": "51539607552"
+  },
+  "apple": {
+    "name": "Apple M4 Max",
+    "ecpuCores": 4,
+    "pcpuCores": 12,
+    "gpuCores": 40,
+    "memoryGb": 48,
+    "swapTotalBytes": "12884901888",
+    "ramTotalBytes": "51539607552"
+  },
+  "writerId": "5f3fdunyf3g2f85ymmzhznax8440pwt7"
+}
