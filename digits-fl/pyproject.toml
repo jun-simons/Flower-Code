@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "quickstart-pytorch"
+name = "digits-fl"
 version = "1.0.0"
-description = "Federated Learning with PyTorch and Flower (Quickstart Example)"
+description = "Federated Learning on MNIST with Flower"
 license = "Apache-2.0"
 dependencies = [
     "flwr[simulation]>=1.24.0",
@@ -18,24 +18,30 @@ dependencies = [
 packages = ["."]
 
 [tool.flwr.app]
-publisher = "flwrlabs"
+publisher = "Jun"
 
 [tool.flwr.app.components]
 serverapp = "pytorchexample.server_app:app"
 clientapp = "pytorchexample.client_app:app"
 
 [tool.flwr.app.config]
-num-server-rounds = 3
-fraction-evaluate = 0.5
+num-server-rounds = 20
 local-epochs = 1
-learning-rate = 0.1
-batch-size = 32
+learning-rate = 0.05
+batch-size = 64
+
+# participation / eval
+fraction-evaluate = 0.5
+fraction-fit = 0.2
+
+# FedProx proximal-mu
+proximal-mu = 0.0
 
 [tool.flwr.federations]
 default = "local-simulation"
 
 [tool.flwr.federations.local-simulation]
-options.num-supernodes = 10
+options.num-supernodes = 20
 
 [tool.flwr.federations.local-simulation-gpu]
 options.num-supernodes = 10
