@@ -59,7 +59,7 @@ def load_centralized_dataset():
     """Load test set and return dataloader."""
     # Load entire test set
     test_dataset = load_dataset("ylecun/mnist", split="test")
-    dataset = test_dataset.with_format("torch").with_transform(apply_transforms)
+    dataset = test_dataset.with_transform(apply_transforms)
     return DataLoader(dataset, batch_size=128)
 
 
@@ -79,22 +79,23 @@ def train(net, trainloader, epochs, lr, device):
             loss.backward()
             optimizer.step()
             running_loss += loss.item()
-    avg_trainloss = running_loss / len(trainloader)
+    avg_trainloss = running_loss / (len(trainloader) * epochs)
     return avg_trainloss
 
 
 def test(net, testloader, device):
     """Validate the model on the test set."""
     net.to(device)
-    criterion = torch.nn.CrossEntropyLoss()
+    criterion = torch.nn.CrossEntropyLoss().to(device)
     correct, loss = 0, 0.0
+    net.eval()
     with torch.no_grad():
         for batch in testloader:
             images = batch["image"].to(device)
             labels = batch["label"].to(device)
             outputs = net(images)
             loss += criterion(outputs, labels).item()
-            correct += (torch.max(outputs.data, 1)[1] == labels).sum().item()
+            correct += (outputs.argmax(dim=1) == labels).sum().item()
     accuracy = correct / len(testloader.dataset)
     loss = loss / len(testloader)
     return loss, accuracy
